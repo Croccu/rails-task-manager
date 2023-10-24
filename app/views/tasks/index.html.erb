@@ -1,0 +1,13 @@
+<div class="container d-flex flex-column vw-100 justify-content-center align-items-center">
+  <h1>My tasks</h1>
+  <div class="border-1 border-top w-100 d-flex flex-column align-items-center">
+    <ul class="p-2">
+      <% @tasks.each do |task| %>
+        <li><%= link_to task.title, task_path(task), :class=>"text-decoration-none my-3" %> - <%= link_to "", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, :class=>"fa-solid fa-trash-can"%></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="border-1 border-top w-100 d-flex justify-content-center py-3">
+    <%= link_to "Add new task", new_task_path, :class=>"btn btn-primary" %>
+  </div>
+</div>

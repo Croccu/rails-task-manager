@@ -1,0 +1,20 @@
+<div class="container d-flex flex-column vw-100 justify-content-center align-items-center my-3">
+  <h2><%= @task.title %></h2>
+  <div class="border-1 border-top w-100 d-flex flex-column align-items-center pt-3">
+    <p><%= @task.details %></p>
+    <% if @task.completed %>
+      <p>This task is <strong>Completed</strong><p>
+    <% else %>
+      <p>This task is not completed yet</p>
+    <% end %>
+  </div>
+  <div class="border-1 border-top w-100 d-flex justify-content-center p-3">
+    <%= link_to "Back to list", tasks_path, :class=>"btn btn-secondary m-2" %>
+    <%= link_to "Edit task", edit_task_path, :class=>"btn btn-warning m-2" %>
+    <%= link_to "Delete",
+      task_path(@task),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+      :class=>"btn btn-danger m-2"
+    %>
+  </div>
+</div>
